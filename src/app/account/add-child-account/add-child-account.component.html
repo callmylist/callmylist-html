@@ -1,0 +1,70 @@
+		<div class="row justify-content-center mt-4">
+			<div class="logo-container">
+				<img src="assets/logo.png" class="w-100">
+			</div>
+		</div>
+		<div class="row mt-4 signup-label">
+			<h3 class="signup-label w-100">
+				SIGN UP
+			</h3>
+		</div>
+		<div class="row form-container justify-content-center">
+			<div class="col-10">
+				<div class="row">
+					<div class="col-6">
+						  <mat-form-field class="w-100">
+						    <input matInput placeholder="First Name" type="text">
+						  </mat-form-field>
+					</div>
+					<div class="col-6">
+						  <mat-form-field class="w-100">
+						    <input matInput placeholder="Last Name" type="text">
+						  </mat-form-field>
+					</div>
+				</div>
+			</div>
+			<div class="col-10">
+				<div class="row">
+					<div class="col-6">
+						  <mat-form-field class="w-100">
+						    <input matInput placeholder="Email" type="text">
+						  </mat-form-field>
+					</div>
+					<div class="col-6">
+						  <mat-form-field class="w-100">
+						    <input matInput placeholder="Phone Number" type="text">
+						  </mat-form-field>
+					</div>
+				</div>
+			</div>
+			<div class="col-10">
+				<div class="row">
+					<div class="col-6">
+						  <mat-form-field class="w-100">
+						    <input matInput placeholder="Company Name" type="text">
+						  </mat-form-field>
+					</div>
+					<div class="col-6">
+						  <mat-form-field class="w-100">
+						    <input matInput placeholder="Password" [type]="bTogglePassword ? 'text' : 'password'">
+						  </mat-form-field>
+						  <img src="assets/password_show.png" class="password_toggle" (click)="togglePassword()">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center mt-4">
+			<div class="login-btn-container">
+				<button class="btn button-green w-100">
+					SIGN UP
+				</button>
+			</div>
+		</div>
+		<div class="row justify-content-center mt-3">
+			<div class="login-btn-container">
+				<button class="btn button-transparent w-100">
+					CANCEL
+				</button>
+			</div>
+		</div>

@@ -1,0 +1,21 @@
+<div class="add-funds-container">
+	<div class="w-100 close-container">
+		<img src="assets/close.svg" class="float-right" (click)="onClose()">
+	</div>
+	<div class="title-container">
+		<h2>
+			ARE YOU SURE YOU WOULD LIKE TO DELETE THIS?
+		</h2>
+	</div>
+
+
+	<div class="btn-container text-center mt-5">
+		<button class="btn-not-now m-2" (click)="onClose()">
+			CANCEL
+		</button>
+
+		<button class="btn-add-funds m-2" (click)="onClose()">
+			DELETE
+		</button>
+	</div>
+</div>

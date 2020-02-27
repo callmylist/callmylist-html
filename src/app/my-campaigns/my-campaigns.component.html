@@ -1,0 +1,1021 @@
+<div class="main-container pt-4 pr-4 pl-4 pb-3 w-100"  *ngIf="createStage == false">
+	<div class="clearfix">		
+		<h2 class="title float-left">
+			MY CALL CAMPAIGNS
+		</h2>
+		<button class="float-right" *ngIf="callCampaings.length != 0">CREATE CAMPAIGN</button>
+	</div>
+
+	<div class="create-campaign-container p-4 mt-4" *ngIf="callCampaings.length == 0">
+		<h5 class="subtitle">
+			You do not have any Call Campaigns
+		</h5>
+		<button (click)="onCreateCampaign()">CREATE CAMPAIGN</button>
+	</div>
+
+	<div *ngIf="callCampaings.length != 0" class="mr-n4 ml-n4">
+	  <table class="table table-borderless table-striped">
+        <thead>
+        <tr>
+          <th style="width: 16%"><div class="justify-content-left name-header-container">Name<span class="material-icons">edit</span></div></th>
+          <th style="width: 6%" class="text-center"><div class="justify-content-center cpm-header-container">CPM<span class="material-icons">edit</span></div></th>
+          <th style="width: 12%" class="text-center">Total Contacts</th>
+          <th style="width: 10%" class="text-center">Total Dialed</th>
+          <th style="width: 10%" class="text-center">Live</th>
+          <th style="width: 10%" class="text-center">Voicemail</th>
+          <th style="width: 10%" class="text-center">Transfer</th>
+          <th style="width: 8%" class="text-center">DNC</th>
+          <th style="width: 14%" class="text-center">Avg. Listening<br>Duration</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let campaign of callCampaings">
+          <td>
+          	  <div (click)="onUpdate($event)" class="title-container">
+	          		<span class="material-icons" *ngIf="campaign.state == 'checked'">check_circle</span>
+	          		<span class="material-icons ico-close" *ngIf="campaign.state == 'unchecked'">cancel</span>
+	          		<img *ngIf="campaign.state == 'scheduled'" src="assets/scheduled.png">
+	          		{{campaign.name}}
+	            </div>
+	        </td>
+          <td class="text-center">{{campaign.cpm}}</td>
+          <td class="text-center">{{campaign.total_contacts}}</td>
+          <td class="text-center">{{campaign.total_dialed|number}}</td>
+          <td class="text-center">{{campaign.live|number}}</td>
+          <td class="text-center">{{campaign.voicemail|number}}</td>
+          <td class="text-center">{{campaign.transfer|number}}</td>
+          <td class="text-center">{{campaign.dnc|number}}</td>
+          <td class="text-center">{{campaign.duration|number}}%</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="paginator justify-content-center">
+        <span class="material-icons">first_page</span>
+        <span class="material-icons">chevron_left</span>
+        <span class="page-button">1</span>
+        <span class="page-button">2</span>
+        <span class="page-button">3</span>
+        <span class="page-button">4</span>
+        <span class="material-icons">chevron_right</span>
+        <span class="material-icons">last_page</span>
+      </div>
+	</div>
+
+
+</div>
+
+<div class="sounds-container" *ngIf="createStage == true">
+  <div class="row" *ngIf="!bCompleted">
+    <div class="new-campaign-container pb-2 col-md-8">
+
+      <div class="title-bar clearfix pt-4 pb-4 pl-2">
+          <h2 class="title float-left">
+            {{type==0?'NEW CAMPAIGN':'RERUN CAMPAIGN'}}
+          </h2>
+          <button class="btn button-green btn-continue float-right" *ngIf="schedulingType != SCHEDULING_NOW && schedulingType != SCHEDULING_FUTURE" (click)="onContinue()">
+            CONTINUE
+          </button>
+          <button class="btn btn-continue float-right" *ngIf="schedulingType == SCHEDULING_NOW || schedulingType == SCHEDULING_FUTURE" (click)="onComplete()">
+            COMPLETE
+          </button>
+        </div>
+
+        <div *ngIf="nStep == 0">
+          <div class="comment-container">
+            <p>
+              What type of campaign would you like to send?
+            </p>
+          </div>
+
+          <div class="row justify-content-center type-container">
+            <div (click)="onSelectType(COMPAIGN_TYPE_CALL)" class="{{campaignType == COMPAIGN_TYPE_CALL?'type-active':''}} ml-3 mr-3">
+              <div class="button-container button-active">
+                <div class="mx-auto">
+                  <div>
+                    <img src="{{campaignType == COMPAIGN_TYPE_CALL?'assets/phone_highlight.png':'assets/phone.png'}}">
+                  </div>
+                  <div>
+                    <label>Call</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div (click)="onSelectType(COMPAIGN_TYPE_TEXT)" class="{{campaignType == COMPAIGN_TYPE_TEXT?'type-active':''}}  ml-3 mr-3">         
+              <div class="button-container">
+                <div class="mx-auto">
+                  <div>
+                    <img src="{{campaignType == COMPAIGN_TYPE_TEXT?'assets/text_highlight.png':'assets/text.png'}}">
+                  </div>
+                  <div>
+                    <label>Text</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 1">
+
+          <div class="comment-container">
+            <p>
+              Enter your <strong>campaign name</strong> below
+            </p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-6">
+            <mat-form-field class="w-100">
+              <mat-label>Campaign Name</mat-label>
+              <input matInput placeholder="Please add campaign name here" type="text">
+            </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 2 && campaignType == COMPAIGN_TYPE_CALL">
+
+          <div class="comment-container">
+            <p>
+              What number would you like displayed on the <strong>Caller ID?</strong>
+            </p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-6">
+            <mat-form-field class="w-100">
+              <mat-label>Caller ID Number</mat-label>
+              <input matInput placeholder="(555) 555-5555" type="text">
+            </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+
+        <div *ngIf="nStep == 2 && campaignType == COMPAIGN_TYPE_TEXT">
+
+          <div class="comment-container">
+            <p>
+              Selet you <strong>Area Code</strong> below
+            </p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <mat-form-field class="w-100">
+                <mat-label>Area Code</mat-label>
+                <input matInput placeholder="(555) 555-5555" type="text">
+              </mat-form-field>
+
+              <button class="btn btn-gray btn-search">SEARCH</button>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-6 justify-content-center">
+              <span class="material-icons float-left mr-1">check_circle</span>
+              <span class="label-area">Area code available</span>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-6 justify-content-center">
+              <span class="material-icons float-left mr-1 error-icon">info</span>
+              <span class="label-area">We are sorry but that Area Code isn’t currently available. Please search for a different Area Code.</span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 3 && campaignType == COMPAIGN_TYPE_TEXT">
+          <div class="message-panel">
+            <h5 class="ml-2">
+              Campaign Message
+            </h5>
+            <div class="text-container pt-2">
+              <textarea class="w-100 p-2">This is an example message to be sent. It can wrap to the next line if needed.
+              </textarea>
+            </div>
+
+            <div class="mt-2">
+              <span class="text-length">
+                (40/140)
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 4 && campaignType == COMPAIGN_TYPE_TEXT">
+          <div class="selected-contact-list-container pl-2" *ngIf="uploadContactList">
+            <div>
+              <span class="file-label">Contact list</span>
+            </div>
+            <div class="mt-3 mb-3">
+              <div class="w-100 flex-container">
+                <img src="assets/delete.png" class="ml-3">
+                <span class="file-name ml-3">Penn-State-Contact-List.csv </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 select-contact-list-container pl-4">
+              <div>
+                <span class="label">Select Contact List</span>
+              </div>
+              <div>
+                <div class="">
+                <mat-form-field class="w-100">
+                      <mat-select placeholder="Select Contact List">
+                          <mat-option>Test</mat-option>
+                        </mat-select>
+                </mat-form-field>
+                </div>
+              </div>
+
+
+
+              <div class="seperator">
+              </div>
+            </div>
+            
+            <div class="col-6 select-contact-list-container pl-4">
+              <div>
+                <span class="label">Select Contact List</span>
+              </div>
+              <div>
+                <div class="">
+                <mat-form-field class="w-100">
+                      <mat-select placeholder="Select Contact List">
+                          <mat-option>Test</mat-option>
+                        </mat-select>
+                </mat-form-field>
+                </div>
+
+
+                <div>
+                  <mat-slide-toggle>Does your file contain headers?</mat-slide-toggle>
+                </div>
+
+                <div class="option-button-container upload-button-container mb-3">
+                    <button (click)="onUploadContactList()">UPLOAD CONTACT LIST</button>
+                  </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 3 && campaignType == COMPAIGN_TYPE_CALL">
+
+          <div class="comment-container">
+            <p>
+              Select all options you would like for your campaign
+            </p>
+          </div>
+
+          <div class="row justify-content-center pr-3 pl-3">
+
+            <div class="option-container">
+              <div class="option-title-container px-2 pt-2">
+                <i class="fa fa-info-circle float-left" aria-hidden="true"></i>
+
+                <span>
+                  Live Answer
+                </span>
+              </div>
+              
+              <div class="file-container ml-4 mr-4 mb-3" *ngIf="transfer">
+                <span class="file-name-label mr-3">File Name:</span>
+                <span class="file-name"><strong>tts_6230</strong></span>
+                <div class="play-bar-container mt-1">
+                  <span class="ml-4">
+                    0:00
+                  </span>
+                  <span>
+                    /
+                  </span>
+                  <span>
+                    0:00
+                  </span>
+                  <img class="float-right mr-4 mt-2" src="assets/sound_on.png">
+                  <img class="float-left ml-4" src="assets/play.png">
+                </div>
+              </div>
+              <div class="toggles-container">
+                <div class="toggle-container ml-4 mb-2">
+                  <mat-slide-toggle (change)="onToggleTransfer($event)">Transfer</mat-slide-toggle>
+                  <p class="fa fa-info-circle mt-1 ml-2" aria-hidden="true"></p>
+                </div>
+                <div class="toggle-container ml-4 mb-4">
+                  <mat-slide-toggle (change)="onDoNotCall($event)">Do Not Call</mat-slide-toggle>
+                  <p class="fa fa-info-circle mt-1 ml-2" aria-hidden="true"></p>
+                </div>
+              </div>
+
+
+              <div class="bottom-panel">
+                <div class="campaign-selector ml-3 mr-3" *ngIf="!transfer">
+                      <mat-form-field>
+                        <mat-label>Select Audio File</mat-label>
+                        <mat-select placeholder="">
+                          <mat-option>Test</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="option-button-container" *ngIf="!transfer">
+                    <button>TEXT TO SPEECH</button>
+                  </div>
+                  <div class="option-button-container mb-3" *ngIf="transfer">
+                    <button>REMOVE AUDIO</button>
+                  </div>
+                  <div class="option-button-container mb-3" *ngIf="!transfer">
+                    <button>UPLOAD AUDIO</button>
+                  </div>
+              </div>
+
+            </div>
+            <div class="option-container">
+              <div class="mail-title-container px-2 pt-2">
+                <i class="fa fa-info-circle float-left" aria-hidden="true"></i>
+
+                <span>
+                  Voicemail
+                </span>
+              </div>
+              <div class="result-container ml-4">
+                <strong>For best results:</strong><br>
+              32-37 seconds recommended<br>
+              <br>
+              File Format: .mp3, .wav
+              </div>
+              <div class="toggle-container ml-4 mb-1 mt-1">
+                <mat-slide-toggle>Use Ringless Voicemail</mat-slide-toggle>
+                <p class="fa fa-info-circle mt-1 ml-2" aria-hidden="true"></p>
+              </div>
+
+              <div>
+                <div class="campaign-selector ml-3 mr-3">
+                      <mat-form-field>
+                        <mat-label>Select Audio File</mat-label>
+                        <mat-select placeholder="">
+                          <mat-option>Test</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="option-button-container">
+                    <button class="button-danger">TEXT TO SPEECH</button>
+                  </div>
+                  <div class="option-button-container mb-3">
+                    <button class="button-danger">UPLOAD AUDIO</button>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row justify-content-center pr-3 pl-3" *ngIf="transfer || doNotCall">
+            <div class="transfer-container" *ngIf="transfer">
+              <div class="option-title-container px-2 pt-2">
+                <i class="fa fa-info-circle float-left" aria-hidden="true"></i>
+
+                <span>
+                  Transfer
+                </span>
+              </div>
+              
+              <div class="file-container ml-4 mr-4 mb-3" *ngIf="useDefaultAudio">
+                <span class="file-name-label mr-3">File Name:</span>
+                <span class="file-name"><strong>Default Audio</strong></span>
+                <div class="play-bar-container mt-1">
+                  <span class="ml-4">
+                    0:00
+                  </span>
+                  <span>
+                    /
+                  </span>
+                  <span>
+                    0:00
+                  </span>
+                  <img class="float-right mr-4 mt-2" src="assets/sound_on.png">
+                  <img class="float-left ml-4" src="assets/play.png">
+                </div>
+              </div>
+
+              <div *ngIf="useDefaultAudio" class="ml-4 mr-4 mb-5">
+                <div>
+                  <div class="label-container">
+                  <span>Transfer Digit</span>
+
+                    <p class="fa fa-info-circle mt-1 ml-2" aria-hidden="true"></p>
+                </div>
+                <mat-form-field class="w-100">
+                      <mat-select placeholder="">
+                            <mat-option>Test</mat-option>
+                          </mat-select>
+                </mat-form-field>
+                </div>
+                <div>
+                  <div class="label-container">
+                  <span>Concurrent Transfers (1-99)</span>
+
+                    <p class="fa fa-info-circle mt-1 ml-2" aria-hidden="true"></p>
+                </div>
+                <mat-form-field class="w-100">
+                      <mat-select placeholder="">
+                            <mat-option>Test</mat-option>
+                          </mat-select>
+                </mat-form-field>
+                </div>
+                <div>
+                  <div class="label-container">
+                  <span>Transfer Phone Number</span>
+
+                    <p class="fa fa-info-circle mt-1 ml-2" aria-hidden="true"></p>
+                </div>
+                <mat-form-field class="w-100">
+                  <mat-label></mat-label>
+                    <input matInput placeholder="(555) 555-5555" type="text">
+                </mat-form-field>
+                </div>
+
+              </div>
+
+              <div class="toggles-container" *ngIf="!useDefaultAudio">
+                <div class="toggle-container ml-4 mb-4">
+                  <mat-slide-toggle (change)="onUseDefaultAudio($event)">Use Default Audio</mat-slide-toggle>
+                </div>
+              </div>
+
+
+              <div class="bottom-panel">
+                <div class="campaign-selector ml-3 mr-3" *ngIf="!useDefaultAudio">
+                      <mat-form-field>
+                        <mat-label>Select Audio File</mat-label>
+                        <mat-select placeholder="">
+                          <mat-option>Test</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="option-button-container" *ngIf="!useDefaultAudio">
+                    <button>TEXT TO SPEECH</button>
+                  </div>
+                  <div class="option-button-container mb-3" *ngIf="useDefaultAudio">
+                    <button>REMOVE AUDIO</button>
+                  </div>
+                  <div class="option-button-container mb-3" *ngIf="!useDefaultAudio">
+                    <button>UPLOAD AUDIO</button>
+                  </div>
+              </div>
+
+            </div>
+
+
+            <div class="transfer-container do-not-call-container" *ngIf="doNotCall">
+              <div class="option-title-container px-2 pt-2">
+                <i class="fa fa-info-circle float-left" aria-hidden="true"></i>
+
+                <span>
+                  Do Not Call
+                </span>
+              </div>
+              
+              <div class="file-container ml-4 mr-4 mb-3">
+                <span class="file-name-label mr-3">File Name:</span>
+                <span class="file-name"><strong>Default Audio</strong></span>
+                <div class="play-bar-container mt-1">
+                  <span class="ml-4">
+                    0:00
+                  </span>
+                  <span>
+                    /
+                  </span>
+                  <span>
+                    0:00
+                  </span>
+                  <img class="float-right mr-4 mt-2" src="assets/sound_on.png">
+                  <img class="float-left ml-4" src="assets/play.png">
+                </div>
+              </div>
+
+              <div class="toggles-container">
+                <div class="toggle-container ml-4 mb-4 mr-4">
+                  <mat-slide-toggle></mat-slide-toggle>
+                  <p>{{transfer?'Did you forget to include Opt Out information in your live audio file? Would you like us to include it for you?':'Did you include Opt Out information in your audio?'}}                    
+                  </p>
+                </div>
+              </div>
+
+              <div class="mr-4 ml-4 mt-n4 form-container">
+                <div class="label-container">
+                <span>DNC Digit</span>
+                  <p class="fa fa-info-circle mt-1 ml-2" aria-hidden="true"></p>
+              </div>
+              <mat-form-field class="w-100">
+                    <mat-select placeholder="">
+                        <mat-option>Test</mat-option>
+                      </mat-select>
+              </mat-form-field>
+              </div>
+              
+
+
+              <div class="bottom-panel">
+                  <div class="option-button-container mb-3">
+                    <button>REMOVE AUDIO</button>
+                  </div>
+              </div>
+
+            </div>
+
+
+            <div class="option-container placeholder" *ngIf="!transfer || !doNotCall">
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 4 && campaignType == COMPAIGN_TYPE_CALL">
+          <div class="selected-contact-list-container pl-2" *ngIf="uploadContactList">
+            <div>
+              <span class="file-label">Contact list</span>
+            </div>
+            <div class="mt-3 mb-3">
+              <div class="w-100 flex-container">
+                <img src="assets/delete.png" class="ml-3">
+                <span class="file-name ml-3">Penn-State-Contact-List.csv </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 select-contact-list-container pl-4">
+              <div>
+                <span class="label">Select Contact List</span>
+              </div>
+              <div>
+                <div class="">
+                <mat-form-field class="w-100">
+                      <mat-select placeholder="Select Contact List">
+                          <mat-option>Test</mat-option>
+                        </mat-select>
+                </mat-form-field>
+                </div>
+              </div>
+
+
+
+              <div class="seperator">
+              </div>
+            </div>
+            
+            <div class="col-6 select-contact-list-container pl-4">
+              <div>
+                <span class="label">Select Contact List</span>
+              </div>
+              <div>
+                <div class="">
+                <mat-form-field class="w-100">
+                      <mat-select placeholder="Select Contact List">
+                          <mat-option>Test</mat-option>
+                        </mat-select>
+                </mat-form-field>
+                </div>
+
+
+                <div>
+                  <mat-slide-toggle>Does your file contain headers?</mat-slide-toggle>
+                </div>
+
+                <div class="option-button-container upload-button-container mb-3">
+                    <button (click)="onUploadContactList()">UPLOAD CONTACT LIST</button>
+                  </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 5 && campaignType == COMPAIGN_TYPE_CALL">
+          <div class="settings-container ml-2">
+            <span class="title">Maximum Calls Per Minute (CPM)</span>
+            <div class="ml-2">
+              <div>                           
+                <label>
+                  Calls Per Minute (1-50)
+                </label>
+              </div>
+              <form [formGroup]="counterForm">
+                <mat-form-field>
+                <input matInput placeholder="" type="number" formControlName="counter">
+                  <mat-error *ngIf="hasError('counter', 'max')">Please enter a value between 1 and 50</mat-error>
+              </mat-form-field>
+              </form>
+            </div>
+            <div class="flex-container mt-4">
+              <span class="title">Callback Options</span>               
+              <i class="fa fa-info-circle ml-2" aria-hidden="true"></i>
+            </div>
+            <div class="mt-5">
+              <span class="subtitle ml-1">Which Contacts would you like to retry</span>
+              <div class="toggle-container ml-1 mr-4 mt-1">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>Show Callback Options</p>
+              </div>
+              <div class="toggle-container ml-1 mr-4 mt-1">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>Show Callback Options</p>
+              </div>
+              <div class="toggle-container ml-1 mr-4 mt-1">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>Show Callback Options</p>
+              </div>
+            </div>
+
+            <div class="ml-2">
+              <div>
+                <label>
+                  Number of Attempts (1-5)
+                </label>
+              </div>
+              <div>
+              <mat-form-field class="dropdown">
+                    <mat-select placeholder="">
+                        <mat-option>Test</mat-option>
+                      </mat-select>
+              </mat-form-field>
+              </div>
+            </div>
+            <div class="ml-2">
+              <div>
+                <label>
+                  Time in between attempts
+                </label>
+              </div>
+              <div>
+              <mat-form-field class="dropdown">
+                    <mat-select placeholder="">
+                        <mat-option>Test</mat-option>
+                      </mat-select>
+              </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 5 && campaignType == COMPAIGN_TYPE_TEXT">
+          <div class="scheduling-container">
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <h4>
+                  When would you like to schedule your campaign to start?
+                </h4>
+              </div>
+            </div>
+
+            <div>
+              <div class="row justify-content-center type-container">
+                <div (click)="onSelectScheduling(SCHEDULING_NOW)" class="{{schedulingType == SCHEDULING_NOW?'type-active':''}}">
+                  <div class="button-container button-active">
+                    <div class="mx-auto">
+                      <div>
+                        <img src="{{schedulingType == SCHEDULING_NOW?'assets/start_now_highlight.png':'assets/start_now.png'}}">
+                      </div>
+                      <div>
+                        <label>Start Now</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div (click)="onSelectScheduling(SCHEDULING_FUTURE)" class="{{schedulingType == SCHEDULING_FUTURE?'type-active':''}}">          
+                  <div class="button-container">
+                    <div class="mx-auto">
+                      <div>
+                        <img src="{{schedulingType == SCHEDULING_FUTURE?'assets/future_highlight.png':'assets/future.png'}}">
+                      </div>
+                      <div>
+                        <label>In The Future</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="start-new-container" *ngIf="schedulingType == SCHEDULING_NOW">
+              <div class="row">
+                <div class="col-8 offset-3">
+
+                  <div class="restrictions-container">
+                    <div>
+                      <span>This campaign is estimated to run <strong>22</strong> minutes</span>
+                    </div>
+
+                    <h5 class="mt-3">Campaign Time Restrictions</h5>
+                    <span>
+                      Contacts will not be dialed outside these hours
+                    </span>
+                    <div class="row mt-3">
+                      <div class="col-3">
+                        <mat-form-field class="w-100">
+                        <input matInput type="time" placeholder="Start Time">
+                      </mat-form-field>
+                      </div>
+                      <div class="col-3">
+                        <mat-form-field class="w-100">
+                        <input matInput type="time" placeholder="End Time">
+                      </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="timezone-container">
+                      <div class="toggle-container">
+                        <label>
+                          Time in between attempts
+                        </label>
+                      </div>
+                      <div>
+                      <mat-form-field class="dropdown">
+                            <mat-select placeholder="">
+                                <mat-option>Test</mat-option>
+                              </mat-select>
+                      </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
+            </div>
+
+            <div class="future-container" *ngIf="schedulingType == SCHEDULING_FUTURE">
+              <div class="ml-4 start-date-container">
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                    <input matInput type="date" placeholder="Start Date">
+                  </mat-form-field>
+                </div>  
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="Start Time">
+                  </mat-form-field>
+                </div>  
+              </div>
+              <div class="toggle-container ml-4 mr-4 mt-2">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>
+                  Resume campaign the following day if campaign isn’t completed by 10pm
+                  <br>
+                <u>(Call My List will stop all campaigns if not complete)</u>
+              </p>
+              </div>
+              <div class="toggle-container ml-4 mr-4 mt-3">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>
+                  Schedule for multiple days
+              </p>
+              </div>
+
+              <div class="restrictions-container">
+                <h5>Campaign Time Restrictions</h5>
+                <span>
+                  Contacts will not be dialed outside these hours
+                </span>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="Start Time">
+                  </mat-form-field>
+                  </div>
+                  <div class="col-3">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="End Time">
+                  </mat-form-field>
+                  </div>
+                </div>
+                <div class="timezone-container">
+                  <div class="toggle-container">
+                    <label>
+                      Time in between attempts
+                    </label>
+                  </div>
+                  <div>
+                  <mat-form-field class="dropdown">
+                        <mat-select placeholder="">
+                            <mat-option>Test</mat-option>
+                          </mat-select>
+                  </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="nStep == 6 && campaignType == COMPAIGN_TYPE_CALL">
+          <div class="scheduling-container">
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <h4>
+                  When would you like to schedule your campaign to start?
+                </h4>
+              </div>
+            </div>
+
+            <div>
+              <div class="row justify-content-center type-container">
+                <div (click)="onSelectScheduling(SCHEDULING_NOW)" class="{{schedulingType == SCHEDULING_NOW?'type-active':''}}">
+                  <div class="button-container button-active">
+                    <div class="mx-auto">
+                      <div>
+                        <img src="{{schedulingType == SCHEDULING_NOW?'assets/start_now_highlight.png':'assets/start_now.png'}}">
+                      </div>
+                      <div>
+                        <label>Start Now</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div (click)="onSelectScheduling(SCHEDULING_FUTURE)" class="{{schedulingType == SCHEDULING_FUTURE?'type-active':''}}">          
+                  <div class="button-container">
+                    <div class="mx-auto">
+                      <div>
+                        <img src="{{schedulingType == SCHEDULING_FUTURE?'assets/future_highlight.png':'assets/future.png'}}">
+                      </div>
+                      <div>
+                        <label>In The Future</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="start-new-container" *ngIf="schedulingType == SCHEDULING_NOW">
+              <div class="toggle-container ml-4 mr-4 mt-2">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>
+                  Resume campaign the following day if campaign isn’t completed by 10pm
+                  <br>
+                <u>(Call My List will stop all campaigns if not complete)</u>
+              </p>
+              </div>
+              <div class="toggle-container ml-4 mr-4 mt-3">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>
+                  Schedule for multiple days
+              </p>
+              </div>
+
+              <div class="restrictions-container">
+                <h5>Campaign Time Restrictions</h5>
+                <span>
+                  Contacts will not be dialed outside these hours
+                </span>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="Start Time">
+                  </mat-form-field>
+                  </div>
+                  <div class="col-3">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="End Time">
+                  </mat-form-field>
+                  </div>
+                </div>
+                <div class="timezone-container">
+                  <div class="toggle-container">
+                    <label>
+                      Time in between attempts
+                    </label>
+                  </div>
+                  <div>
+                  <mat-form-field class="dropdown">
+                        <mat-select placeholder="">
+                            <mat-option>Test</mat-option>
+                          </mat-select>
+                  </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="future-container" *ngIf="schedulingType == SCHEDULING_FUTURE">
+              <div class="ml-4 start-date-container">
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                    <input matInput type="date" placeholder="Start Date">
+                  </mat-form-field>
+                </div>  
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="Start Time">
+                  </mat-form-field>
+                </div>  
+              </div>
+              <div class="toggle-container ml-4 mr-4 mt-2">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>
+                  Resume campaign the following day if campaign isn’t completed by 10pm
+                  <br>
+                <u>(Call My List will stop all campaigns if not complete)</u>
+              </p>
+              </div>
+              <div class="toggle-container ml-4 mr-4 mt-3">
+                <mat-slide-toggle></mat-slide-toggle>
+                <p>
+                  Schedule for multiple days
+              </p>
+              </div>
+
+              <div class="restrictions-container">
+                <h5>Campaign Time Restrictions</h5>
+                <span>
+                  Contacts will not be dialed outside these hours
+                </span>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="Start Time">
+                  </mat-form-field>
+                  </div>
+                  <div class="col-3">
+                    <mat-form-field class="w-100">
+                    <input matInput type="time" placeholder="End Time">
+                  </mat-form-field>
+                  </div>
+                </div>
+                <div class="timezone-container">
+                  <div class="toggle-container">
+                    <label>
+                      Time in between attempts
+                    </label>
+                  </div>
+                  <div>
+                  <mat-form-field class="dropdown">
+                        <mat-select placeholder="">
+                            <mat-option>Test</mat-option>
+                          </mat-select>
+                  </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="campaign-progress-container col ml-md-4 mt-md-0 mt-4">
+      <div class="title-bar clearfix pt-4 pb-4 pl-2">
+          <h2 class="title float-left">
+            CAMPAIGN PROGRESS
+          </h2>
+        </div>
+
+        <div *ngIf="campaignType == COMPAIGN_TYPE_CALL">
+          <div class="campaign-item  {{nStep>i-1?'campaign-item-active':''}}" *ngFor="let process of sound_campaign_process; let i = index" (click)="onStep(i)">
+            <span class="mr-2">
+              {{i + 1}}
+            </span>
+
+            {{process}}
+          </div>          
+        </div>
+
+        <div *ngIf="campaignType == COMPAIGN_TYPE_TEXT">
+          <div class="campaign-item  {{nStep>i-1?'campaign-item-active':''}}" *ngFor="let process of text_campaign_process; let i = index" (click)="onStep(i)">
+            <span class="mr-2">
+              {{i + 1}}
+            </span>
+
+            {{process}}
+          </div>          
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="bCompleted">
+    <div class="congrats-container mx-auto">
+      <div class="title-bar justify-content-center mt-4">
+        <img src="assets/completed.png">
+        <span>
+          Congratulations!
+        </span>
+      </div>
+      <div class="justify-content-center mt-4">
+        <p>
+          Your campaign has been created.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+

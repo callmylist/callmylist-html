@@ -1,0 +1,76 @@
+.upload-title
+{
+  font-family: Roboto, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.button-close
+{
+	margin-top: 8px;
+}
+
+.icon-container
+{
+  width: 43px;
+  height: 43px;
+  border-radius: 25px;
+  background-color: #31977f;
+  text-align: center;
+  margin-top: 9px;
+}
+
+.icon-container span
+{
+	width: 24px;
+	height: 16px;
+	color: white;
+	margin-top: 10px;
+}
+
+.file-name
+{
+  font-family: OpenSans, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+  margin-bottom: 3px !important;
+}
+
+.progress-title
+{
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.button-delete
+{
+	color: #515151;
+}
+
+.upload-container
+{
+	margin-top: 20px;
+	margin-right: -5px;
+	margin-left: 0px;
+}
+
+mat-progress-bar
+{
+	margin-top: 11px;
+}

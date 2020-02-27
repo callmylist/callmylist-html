@@ -1,0 +1,58 @@
+
+table
+{
+  margin-bottom: 0px !important;
+}
+
+th
+{  
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #6f6f6f;
+}
+
+th div
+{
+  display: flex;
+}
+
+th span
+{
+  font-size: 20px;
+  margin-top: -3px;
+  margin-left: 5px;
+}
+
+td
+{  
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+td div
+{
+  display: flex;
+}
+
+td
+{
+  cursor: pointer;
+}
+
+td span
+{  
+  margin-top: -4px;
+  margin-right: 6px;
+  color: #515151;
+}

@@ -1,0 +1,176 @@
+<div class="search-container mt-n4 mx-n4">
+	<div class="row mx-0">
+		<div class="col-md-6 offset-md-3">
+			<span class="material-icons">search</span>
+			<mat-form-field class="w-100 mb-n3">
+				<mat-label class="active"></mat-label>
+	        	<input matInput type="text" placeholder="Contact Search">
+	        </mat-form-field>
+		</div>
+
+		<div class="col-md-3">
+			<button class="btn button-green float-right">
+				NEW MESSAGE
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="message-list-container mt-4 pt-2">
+	<div class="stage-container m-3 row">
+		<div class="w-100">
+			<h5>
+				Contacts
+			</h5>
+
+			<button class="btn button-green float-right" (click)="onAddContact()">
+				ADD CONTACT
+			</button>
+		</div>
+	</div>
+
+	<div *ngIf="noContact">
+		<div class="no-contact-box text-center p-3 m-4">
+			<p>
+				You do not have any Contacts
+			</p>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-md-8 text-center">
+				<h4 class="text-center">
+					Import contacts from CRM Data
+				</h4>
+	
+				<div class="px-5 mt-3">
+					<p class="text-center import-message">
+						To import your contacts from a CRM solution, we will need to know which column in your export file matches below. 
+					</p>
+				</div>
+	
+				<div class="row justify-content-center mt-2">
+					<div class="col-md-2">
+						<mat-label class="active">First Name</mat-label>
+						<mat-form-field class="w-100 form-field-week-day">
+			            	<mat-select placeholder="">
+			                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+					<div class="col-md-2">
+						<mat-label class="active">Last Name</mat-label>
+						<mat-form-field class="w-100 form-field-week-day">
+			            	<mat-select placeholder="">
+			                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+					<div class="col-md-2">
+						<mat-label class="active">Company Name</mat-label>
+						<mat-form-field class="w-100 form-field-week-day">
+			            	<mat-select placeholder="">
+			                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+					<div class="col-md-2">
+						<mat-label class="active">Email</mat-label>
+						<mat-form-field class="w-100 form-field-week-day">
+			            	<mat-select placeholder="">
+			                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+					<div class="col-md-2">
+						<mat-label class="active">Phone</mat-label>
+						<mat-form-field class="w-100 form-field-week-day">
+			            	<mat-select placeholder="">
+			                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+				</div>
+
+				<button class="btn button-transparent btn-select-file mt-2 mb-4" (click)="onSelectFile()">SELECT FILE</button>
+			</div>
+		</div>
+
+	</div>
+	
+	<div *ngIf="!noContact" class="message-list mt-2">
+		<div *ngFor="let contact of contact_list; index as i ">
+			<div class="{{i%2==1?'highlight':''}}">
+				<div class="row ml-0 mr-0">
+					<div class="col row mr-3" (click)="onMessages()">
+						<div>
+							<span *ngIf="contact_filter!=2" class="material-icons ml-1 mt-3 {{contact.favorite == true?'black-fill':''}}">{{contact.favorite == true?'star':'star_border'}}
+							</span>
+						</div>
+
+						<div class="col-2">
+							<p class="item-name mt-3 mb-0">
+								Steve Smith
+							</p>
+						</div>
+
+						<div class="col">
+							<p class="item-company-name pt-3">
+								Company Name
+							</p>
+						</div>
+
+						<div class="col">
+							<p class="item-company-name pt-3 text-center">
+								stevesmith@gmail.com
+							</p>
+						</div>
+
+						<div class="col">
+							<p class="item-company-name pt-3 text-right">
+								(317) 555-5555
+							</p>
+						</div>
+					</div>
+
+
+					<div class="menu-icon-container description-container">
+						<span class="material-icons mt-auto mb-auto mr-3 menu" [matMenuTriggerFor]="menu">more_vert</span>
+		                <mat-menu #menu="matMenu">
+		                  <button mat-menu-item (click)="onAddAsContact()">Add As Contact</button>
+		                </mat-menu>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

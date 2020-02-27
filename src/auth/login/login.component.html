@@ -1,0 +1,41 @@
+<div class="page-container d-flex">
+	<div class="login-container mr-auto ml-auto flex-width justify-content-center align-self-center container-fluid">
+		<div class="row justify-content-center mt-4">
+			<div class="logo-container">
+				<img src="assets/logo.png" class="w-100">
+			</div>
+		</div>
+		<div class="row mt-4">
+			<h3 class="login-label w-100">
+				LOGIN
+			</h3>
+		</div>
+		<div class="row justify-content-center mb-2 message-container" [hidden]="!bLoginFailed">
+			<div class="col-9">
+				<p>
+					We are sorry but we were not able to log you in with that username and password. Please try again.
+				</p>
+			</div>
+		</div>
+		<div class="row mt-4 justify-content-center">
+			<div class="col-9">
+			  <mat-form-field class="w-100">
+			    <input matInput placeholder="Email Address" type="email">
+			  </mat-form-field>
+			</div>
+			<div class="col-9 password-container">
+			  <mat-form-field class="w-100">
+			    <input matInput placeholder="Password" [type]="bTogglePassword ? 'text' : 'password'">
+			  </mat-form-field>
+			  <img src="assets/password_show.png" class="password_toggle" (click)="togglePassword()">
+			  <a class="float-right reset-container" routerLink="/auth/reset"><u>Password Reset</u></a>
+			</div>
+		</div>
+
+		<div class="row justify-content-center mt-2">
+			<div class="login-btn-container">
+				<button class="w-100 btn_login" (click)="login()">LOGIN</button>
+			</div>
+		</div>
+	</div>
+</div>

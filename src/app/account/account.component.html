@@ -1,0 +1,209 @@
+<div class="account-container p-4">
+	<div class="row">
+		<div class="col-6">
+			<h1 class="title">
+				ACCOUNT
+			</h1>
+		</div>
+		<div class="col-6 text-right">
+			<button class="btn button-transparent">
+				REQUEST API KEY
+			</button>
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-3">
+			<h4 class="account-subtitle">
+				Billing Details
+			</h4>
+
+			<div>
+				<h5 class="subtitle">
+					Plan Type: Annually
+				</h5>
+				<span>
+					Plan Renewal: 1/1/2019
+				</span>
+			</div>
+
+			<div class="mt-3">
+				<h5 class="subtitle">
+					Calls
+				</h5>
+				<span>
+					Price / Call: $.05
+					<br>
+					Billing Increment: 60 seconds
+				</span>
+			</div>
+
+			<div class="mt-3">
+				<h5 class="subtitle">
+					Current Funds
+				</h5>
+				<span>
+					Funds Available: $30.00
+					<br>
+					<br>
+					Estimated Calls Left: 10,250
+					<br>
+					Estimated Texts Left: 90,093
+				</span>
+			</div>
+
+		</div>
+
+		<div class="col-4">
+			<h4 class="account-subtitle">
+				Edit Account
+			</h4>
+
+			<div>
+				<div class="row mt-4">
+					<div class="col-md-6">
+			            <mat-label class="active">First Name</mat-label>
+						<mat-form-field class="w-100">
+			              <input matInput type="text">
+			            </mat-form-field>
+					</div>
+					<div class="col-md-6">
+			              <mat-label>Last Name</mat-label>
+						<mat-form-field class="w-100">
+			              <input matInput placeholder="" type="text">
+			            </mat-form-field>
+					</div>
+				</div>
+				<div class="row mt-2 mx-0">
+		              <mat-label>Company</mat-label>
+					<mat-form-field class="w-100">
+		              <input matInput placeholder="" type="text">
+		            </mat-form-field>
+				</div>
+				<div class="row mt-2 mx-0">
+		              <mat-label>Phone</mat-label>
+					<mat-form-field class="w-100">
+		              <input matInput placeholder="" type="text">
+		            </mat-form-field>
+				</div>
+				<div class="row mt-2 mx-0">
+		              <mat-label>Email</mat-label>
+					<mat-form-field class="w-100">
+		              <input matInput placeholder="" type="text">
+		            </mat-form-field>
+				</div>
+				<div class="row">
+					<div class="col-md-6 p-1">
+						<button class="btn button-edit w-100">
+							RESET PASSWORD
+						</button>
+					</div>
+					<div class="col-md-6 p-1">
+						<button class="btn button-edit w-100">
+							UPDATE
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4 offset-1">
+			<h4 class="account-subtitle">
+				Time Restrictions
+			</h4>
+			<div>
+				<span class="time-comment">
+					Contacts will not be dialed outside these hours
+				</span>
+			</div>
+			<div>
+				<div class="row mt-4">
+					<div class="col-md-6">
+			            <mat-label class="active">Start Time</mat-label>
+						<mat-form-field class="w-100">
+			              <input matInput type="Time">
+			            </mat-form-field>
+					</div>
+					<div class="col-md-6">
+			              <mat-label>End Time</mat-label>
+						<mat-form-field class="w-100">
+			              <input matInput type="Time">
+			            </mat-form-field>
+					</div>
+				</div>
+				<div class="row mt-2 mx-0">
+		            <mat-label>Time Zone</mat-label>
+					<mat-form-field class="w-100">
+	                  <mat-select placeholder="">
+	                    <mat-option>Test</mat-option>
+	                  </mat-select>
+                    </mat-form-field>
+				</div>				
+			</div>
+
+			<div>
+				<div class="upload-panel mx-auto text-center">
+					<img class="w-100 h-100" src="{{fund_image}}" *ngIf="fund_image.length > 0">
+					<div (click)="onUploadFundImage()" *ngIf="fund_image.length == 0">
+						<span class="material-icons mt-4">
+							cloud_upload
+						</span>
+						<br>
+						<span class="upload-label">
+							Upload Fund Image
+						</span>
+						<br>
+						<span class="pixel-label">
+							300px * 300px
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<h2 class="title">
+			CHILD ACCOUNTS
+		</h2>
+
+		<div class="mt-4">
+            <div class="mt-2">
+              <table class="table table-borderless table-striped">
+                <thead>
+                <tr>
+                  <th class="text-left">Name</th>
+                  <th class="text-left">Date Created</th>
+                  <th class="text-left">User Email</th>
+                  <th class="text-right">Funds Available</th>
+                  <th style="width: 36px" class="text-left"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let account of accounts">
+                  <td class="text-left">{{account.name}}</td>
+                  <td class="text-left">{{account.date}}</td>
+                  <td class="text-left">{{account.email}}</td>
+                  <td class="text-right">${{account.funds}}</td>
+                  <td class="text-left">
+                    <span class="material-icons" [matMenuTriggerFor]="menu">more_vert</span>
+					<mat-menu #menu="matMenu">
+					  <button mat-menu-item (click)="onEditAccount()">Edit Account</button>
+					  <button mat-menu-item>Disable</button>
+					  <button mat-menu-item (click)="onAddFunds()">Add Funds</button>
+					  <button mat-menu-item>Delete</button>
+					</mat-menu>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+		<div class="text-right">
+			<button class="btn button-edit" (click)="onAddChildAccount()">
+				ADD CHILD ACCOUNT
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,359 @@
+.main-container
+{
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.started-description
+{
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.main-container button
+{
+	width: 296px;
+}
+
+.step-number-container
+{
+	padding: 12px;
+}
+
+.btn-step
+{
+  width: 75px !important;
+  height: 60px !important;
+  border-radius: 3px;
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin: 12px;
+}
+
+.step-title
+{
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.step-container span.step-desc
+{	
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+mat-label
+{
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+input
+{	
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+mat-form-field
+{
+  margin-top: -8px;
+}
+
+.phone-number
+{	
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.responder-container
+{
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #bcbcbc;
+}
+
+.responder-time-container
+{
+  margin-top: 21px;
+}
+
+.responder-time-container span:not(.material-icons)
+{  
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.material-icons
+{
+  color: #515151;
+}
+
+.btn-next
+{
+  width: 296px;
+}
+
+.btn-select-file
+{
+  width: 170px !important;
+}
+
+.search-container
+{
+  background-color: white;
+  padding: 14px;
+}
+
+.search-container mat-form-field
+{
+  margin-top: -8px !important;
+}
+
+.search-container button
+{
+  width: 145px;
+}
+
+.search-container span
+{
+  position: absolute;
+  top: 7px;
+  left: 16px;
+}
+
+.search-container input
+{
+  padding-left: 30px;
+}
+
+.message-list-container
+{  
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+.message-list-button
+{  
+  width: 100px;
+}
+
+.highlight
+{
+  background-color: rgba(32, 125, 113, 0.05);
+}
+
+.badge-container
+{
+  width: 0; 
+  height: 0;   
+  border-bottom: 11px solid transparent;  
+  border-right: 11px solid transparent;
+  border-top: 11px solid #207d71;
+  border-left: 11px solid #207d71;
+}
+
+.badge-hide
+{
+  border-bottom: 11px solid transparent;  
+  border-right: 11px solid transparent;
+  border-top: 11px solid transparent;
+  border-left: 11px solid transparent;
+}
+.item-name
+{  
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.item-company-name
+{  
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.description-container
+{
+  display: flex;
+  align-items: center;
+}
+
+.fill
+{
+  color: #207d71;
+}
+
+.black-fill
+{
+  color: #414141;
+}
+
+.mat-menu-item
+{
+    width: 200px;
+    outline: none;
+    height: 30px;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;
+}
+
+
+.top-bar
+{
+  padding-right: 15px;
+  padding-left: 15px;
+  background-color: white;
+  margin-bottom: 28px;
+  margin-top: 28px;
+}
+
+
+.top-bar .message-box
+{
+  padding-top: 16px;
+}
+
+.top-bar .message-box h6
+{
+  font-family: Roboto, sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.top-bar .message-box p
+{
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.top-bar .icon-box
+{
+  padding: 20px 30px 10px 30px;
+  background-color: #27937a;
+}
+
+.top-bar .icon-box span
+{  
+  color: white !important;
+  font-size: 3.5em;
+  margin-top: 8px;
+}
+
+.top-bar .button-box
+{
+  padding: 16px;
+}
+
+.top-bar .button-box button
+{
+  margin-top: 14px;
+}
+
+.btn-dark-green {
+  background-color: #207d71;
+  color: white;
+}
+
+.form-field-week-day {
+  margin-top: -3px !important;
+}
+
+.error-container span {
+  color: #d0021d;
+  margin-top: 3px;
+  margin-left: 4px;
+}
+
+.error-container i {
+  color: #d0021d;
+}
+
+.message-container span {
+  color: #515151;
+  margin-top: 3px;
+  margin-left: 4px;
+}
+
+.message-container i {
+  color: #515151;
+}

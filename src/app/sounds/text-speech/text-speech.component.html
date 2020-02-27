@@ -1,0 +1,70 @@
+<div class="position-relative">
+
+	<div class="w-100 close-container">
+		<img src="assets/close.svg" class="float-right">
+	</div>
+
+	<div>
+		<h1 class="big-title">
+			Please enter the text and select<br> voice gender below.
+		</h1>
+	</div>
+
+
+	<div>
+		<div class="row justify-content-center pt-3">
+			<div class="col-9 px-0">
+				<span class="label">
+					Enter Text To Speach
+				</span>
+				<div class="text-container">
+					<textarea class="w-100 h-100 p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mi ex, ullamcorper et interdum sed, ornare quis ante. Pellentesque rhoncus mauris eu posuere volutpat. Suspendisse ut malesuada nibh. In rhoncus justo sed fringilla pellentesque. Aliquam eget aliquam nulla, nec placerat magna. Donec a pharetra tellus. Donec ultricies ullamcorper nunc, a dictum elit pellentesque non.
+					</textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center mt-3">
+			<div class="col-9 px-0">
+				<div class="row">
+					<div class="col-md-4 gender-container">
+						<div>
+							Voice Gender
+						</div>
+						<mat-form-field>
+			                <mat-select>
+			            	    <mat-option>Test</mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+					<div class="col-md-7 offset-md-1">
+						<div class="play-bar-container mt-3">
+				          <span class="ml-4">
+				            0:00
+				          </span>
+				          <span>
+				            /
+				          </span>
+				          <span>
+				            0:00
+				          </span>
+						  <mat-slider></mat-slider>
+				          <img class="float-right mr-4 mt-2" src="assets/sound_on.png">
+				          <img class="float-left ml-4" src="assets/play.png">
+				        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="buttons-container text-center mt-2 mb-2">
+		<button class="button-transparent button-speech m-2">
+			CANCEL
+		</button>
+
+		<button class="button-green button-upload m-2">
+			USE TEXT
+		</button>
+	</div>
+</div>

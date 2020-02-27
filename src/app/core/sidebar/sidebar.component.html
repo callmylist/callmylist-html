@@ -1,0 +1,106 @@
+<nav class="bg-custom sidebar" style="width: 210px;">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column"  (click)="onNavigate()">
+      <li class="nav-item back-item">
+        <a class="nav-link" href="#">
+          <i class="material-icons">arrow_back</i>
+          <span>
+            Back
+          </span>
+        </a>
+      </li>
+      <li class="nav-item mt-2" routerLinkActive="active">
+        <a class="nav-link" routerLink="/app/message-center">
+          <i class="material-icons">message</i>
+          <span>
+            Message Center&nbsp;
+          </span>
+          <span class="message-badge">12</span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url != '/app/message-center'">
+        <a class="nav-link" routerLink="/app/dashboard">
+          <i class="material-icons">dashboard</i>
+          <span>
+          Dashboard
+          </span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url != '/app/message-center'">
+        <a class="nav-link" routerLink="/app/my-campaigns">
+          <i class="material-icons">add_alert</i>
+          <span>
+          My Campaigns
+          </span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url != '/app/message-center'">
+        <a class="nav-link" routerLink="/app/sounds">
+          <i class="material-icons">play_circle_filled</i>
+          <span>
+          Sound
+          </span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url != '/app/message-center'">
+        <a class="nav-link" routerLink="/app/contact-list">
+          <i class="material-icons">playlist_add_check</i>
+          <span>
+          Contact List
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url == '/app/message-center'">
+        <a class="nav-link" routerLink="/app/settings">
+          <i class="material-icons">settings</i>
+          <span>
+          Settings
+          </span>
+        </a>
+      </li>
+
+      <li class="divider"></li>
+    </ul>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url != '/app/message-center'">
+        <a class="nav-link" routerLink="/app/settings">
+          <i class="material-icons">settings</i>
+          <span>
+          Settings
+          </span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url != '/app/message-center'">
+        <a class="nav-link" routerLink="/app/account">
+          <i class="material-icons">account_circle</i>
+          <span>
+          Account
+          </span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url != '/app/message-center'">
+        <a class="nav-link" routerLink="/app/support">
+          <i class="material-icons">help</i>
+          <span>
+          Support
+          </span>
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active" *ngIf="router.url == '/app/message-center'">
+        <a class="nav-link" routerLink="/app/contacts">
+          <i class="material-icons">account_circle</i>
+          <span>
+          Contacts
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="btn-container">
+    <button class="btn-logout ml-3 mr-3">
+      LOGOUT
+    </button>
+  </div>
+</nav>

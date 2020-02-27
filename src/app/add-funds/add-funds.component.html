@@ -1,0 +1,38 @@
+<div class="add-funds-container">
+	<div class="w-100 close-container">
+		<img src="assets/close.svg" class="float-right" (click)="onClose()">
+	</div>
+	<div class="title-container">
+		<h2>
+			ADD FUNDS
+		</h2>
+	</div>
+	<div class="content-container">
+		<p>
+			Enter the amount you would like to add and your credit card information below. 
+		</p>
+		<div class="input-container w-100 justify-content-center mt-4">
+			<div class="mx-auto position-relative">
+				<div class="ml-3">
+					<mat-label class="float-left">Amount</mat-label>
+				</div>
+				<div>
+					<mat-form-field>
+					  <input matInput type="text">
+					</mat-form-field>
+				</div>
+				<i class="fa fa-dollar"></i>
+			</div>
+		</div>
+	</div>
+
+	<div class="btn-container text-center mb-4 mt-1">
+		<button class="btn-not-now m-2" (click)="onSpeech()">
+			NOT NOW
+		</button>
+
+		<button class="btn-add-funds m-2" (click)="onUploadAudio()">
+			YES, ADD FUNDS
+		</button>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<nav class="navbar bg-custom sticky-top flex-md-nowrap p-0" style="position: fixed !important; width: 100%;">
+  <a class="navbar-brand mr-0 pt-3" href="#">
+    <img src="assets/small_logo.png">
+    <b>call</b>mylist<small>.com</small>
+  </a>
+  <ul class="nav justify-content-end px-3 py-1">
+    <li class="nav-item nav-item-balance px-2">
+      <div>
+        Balance
+      </div>
+      <div>
+        <b>{{balance|currency}}</b>
+      </div>
+    </li>
+
+    <li class="nav-item text-nowrap px-2 pt-2">
+      <button type="button" class="btn btn-outline-secondary" (click)="onAddFunds()"><b>ADD FUNDS</b></button>
+    </li>
+
+    <li class="nav-item text-nowrap px-2 pt-2">
+      <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+      </button>
+    </li>
+  </ul>
+</nav>

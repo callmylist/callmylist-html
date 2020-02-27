@@ -1,0 +1,69 @@
+<div class="settings-container p-4">
+	<h3 class="title">
+		Settings
+	</h3>
+
+	<h6 class="setting-subtitle mt-2">
+		General
+	</h6>
+	<div class="row">
+		<div class="col-md-4">
+		    <mat-label class="active">Phone #</mat-label>
+			<mat-form-field class="w-100">
+	          <input matInput type="text">
+	        </mat-form-field>
+		</div>
+	</div>
+
+	<h6 class="setting-subtitle">
+		Auto Responders
+	</h6>
+	<div class="row">
+		<div class="col-md-3">
+		    <mat-label class="active">Auto Responder Name</mat-label>
+			<mat-form-field class="w-100">
+	          <input matInput type="text">
+	        </mat-form-field>
+		</div>
+		<div class="col-md-6">
+		    <mat-label class="active">Auto Responder Message</mat-label>
+			<mat-form-field class="w-100">
+	          <input matInput type="text">
+	        </mat-form-field>
+
+	        <span class="material-icons float-right">add_box</span>
+		</div>
+	</div>
+
+	<h6 class="setting-subtitle">
+		Schedule
+	</h6>
+	<div class="row mt-1">
+		<div class="col-md-2">
+            <mat-label class="active">Day of Week</mat-label>
+			<mat-form-field class="w-100">
+			  <select matNativeControl required>
+			    <option *ngFor="let day of weekdays">{{day}}</option>
+			  </select>
+            </mat-form-field>
+		</div>
+		<div class="col-md-2">
+            <mat-label class="active">Start Time</mat-label>
+			<mat-form-field class="w-100">
+			  <select matNativeControl required>
+			    <option *ngFor="let time of times">{{time}}</option>
+			  </select>
+            </mat-form-field>
+		</div>
+		<div class="col-md-2">
+            <mat-label class="active">End Time</mat-label>
+			<mat-form-field class="w-100">
+			  <select matNativeControl required>
+			    <option *ngFor="let time of times">{{time}}</option>
+			  </select>
+            </mat-form-field>
+		</div>
+	</div>
+
+
+</div>

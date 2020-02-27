@@ -1,0 +1,25 @@
+.navbar {
+  align-items: stretch;
+}
+.navbar-brand {
+  color: white;
+  text-align: center;
+}
+.navbar button {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-item-balance {
+  color: white;
+  text-align: center;
+  font-size: 16px;
+}
+
+.navbar-brand img
+{
+	max-width: 22px;
+	max-height: 22px;
+	margin-right: 5px;
+}

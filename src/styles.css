@@ -1,0 +1,397 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: .875rem;
+  height: 100%;
+  background-color: #bfbfbf;
+}
+.main-bg {
+  background-color: #bfbfbf;
+}
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 35px; /* Height of navbar */
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+/*
+ * Utilities
+ */
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.bg-custom {
+  background-color: #242536;
+}
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.sidebar {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.sidebar .nav-item {
+  position: relative;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.sidebar .nav-item .nav-link {
+  color: rgba(255, 255, 255, 0.57);
+}
+
+.sidebar .nav-item .material-icons {
+  vertical-align: bottom;
+}
+
+.sidebar .nav-item.active:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  width:4px;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+}
+
+.sidebar .nav-item.active {
+  position: relative;
+  background-color: #151524;
+}
+
+.sidebar .nav-item.active:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #207d71;
+}
+
+.sidebar .nav-item.active .nav-link{
+  color: white;
+  font-weight: bold;
+}
+
+.active span {
+  font-weight: bold !important;
+}
+
+.message-badge {
+  background-color: #207d71;
+  color: white;
+  border-radius: 3px;
+  padding: 2px 7px 2px 5px;
+}
+
+.page-container {
+  background-color: white;
+  min-height: calc(100vh - 100px);
+  overflow: hidden;
+}
+
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: white;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #2a8778;
+}
+
+.mat-slide-toggle-thumb {
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #7b7b7b;
+}
+
+
+.mat-form-field-subscript-wrapper
+{
+  width: 500px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label
+{
+  color: #515151 !important;
+}
+
+.navbar-toggler
+{
+  height: 34px;
+  display: none;
+}
+
+@media screen and (max-width: 981px) {
+    .push-right .sidebar {
+      left: -210px !important;
+    }
+
+    app-sidebar
+    {
+      left: -210px;
+      position: absolute;
+    }
+
+    .navbar-toggler
+    {
+      display: block;
+    }
+}
+
+.navbar-brand
+{
+  width: 210px;
+}
+
+@media screen and (max-width: 567px) {
+  .navbar-brand
+  {
+    width: 100%;
+  }
+
+  main
+  {
+    margin-top: 112px !important;
+  }
+}
+
+main
+{
+  margin-top: 56px;
+}
+
+.cdk-overlay-container
+{
+  z-index: 1055 !important;
+}
+
+.mat-dialog-container
+{
+  padding: 16px !important;
+}
+
+.update-campaign > mat-dialog-container
+{
+  padding: 0px !important;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.subtitle
+{   
+  font-family: OpenSans, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+
+.title {
+  font-size: 30px;
+  font-family: Raleway, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.93;
+  letter-spacing: -0.3px;
+  color: #444444;
+}
+
+.button-dark-green
+{
+  height: 36px;
+  background-color: #207d71;
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.86;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  border-color: transparent;
+  border-radius: 3px;
+}
+
+.button-green
+{
+  height: 36px;
+  background-color: #27937a;
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.86;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  border-color: transparent;
+  border-radius: 3px;
+}
+
+.button-green:hover
+{
+  color: #ffffff !important;
+}
+
+.button-transparent
+{
+  height: 36px;
+  border-radius: 3px;
+  border: solid 1px #979797;
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.86;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(68, 68, 68, 0.9);
+  background-color: transparent;
+}
+
+.send-success-container mat-dialog-container
+{
+  padding: 0px !important;
+}
+
+.big-title
+{
+  font-family: Roboto, sans-serif;
+  font-size: 42px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #515151;
+}
+
+
+.loading-data-panel mat-dialog-container
+{
+  border-radius: 4px;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+  background-color: #f0f0f0;
+}
+
+.select-contact-panel mat-dialog-container
+{
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
+.black-background
+{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.mat-menu-panel
+{
+  min-height: auto !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}

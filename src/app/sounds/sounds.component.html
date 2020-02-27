@@ -1,0 +1,123 @@
+<div class="main-container pt-4 pr-4 pl-4 pb-3 w-100" *ngIf="audios.length == 0">
+	<h3 class="title">
+		MY SOUNDS
+	</h3>
+
+	<div class="description-container">
+		<span>
+			<strong>IT’s Simple.</strong> Add and review your audio files here. We have given you 3 easy ways to add sounds. You may record sound files using our recording interface. All sound files will be listed below.<span class="{{isUploading?'':'highlight'}}"> Please call 1-317-552-0035. When prompted enter ID: 24374# and Password: 4571#</span>
+		</span>
+	</div>
+
+	<div class="upload-container pt-4 pl-4 pr-4 pb-3">
+		<h5 class="subtitle">
+			You do not have any Sound files
+		</h5>
+
+		<div>
+			<button class="button-transparent button-speech m-2" (click)="onSpeech()">
+				TEXT TO SPEECH
+			</button>
+
+			<button class="button-green button-upload m-2" (click)="onUploadAudio()">
+				UPLOAD AUDIO
+			</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="row sound-container" *ngIf="audios.length != 0">
+    <div class="sound-list-container pb-2 pt-4 pl-4 pr-4 col-md-7">
+
+    	<div class="row">
+    		<div class="title-container">
+    			<span class="title ml-3">MY SOUNDS</span>
+    		</div>
+    		<div class="col text-right p-0 mt-n3 mt-xs-0">
+	    		<button class="button-transparent button-speech mx-2 mt-xs-2" (click)="onSpeechToText()">
+					TEXT TO SPEECH
+				</button>
+
+				<button class="button-green button-upload mx-2 mt-sm-2">
+					UPLOAD AUDIO
+				</button>
+    		</div>
+
+    	</div>
+
+    	<div class="description-container mt-3">
+    		<span>
+    			<strong>IT’s Simple.</strong> Add and review your audio files here. We have given you 3 easy ways to add sounds. You may record sound files using our recording interface. All sound files will be listed below. Please call 1-317-552-0035. When prompted enter ID: 24374# and Password: 4571#
+    		</span>
+    	</div>
+
+
+		<div class="mr-n4 ml-n4 mt-2">
+		  <table class="table table-borderless table-striped">
+	        <thead>
+	        <tr>
+	          <th style="width: 36px"></th>
+	          <th style="width: 130px" class="text-left">ID</th>
+	          <th class="text-left"><div>Name<span class="material-icons">edit</span></div></th>
+	          <th style="width: 100px;" class="text-center">File Type</th>
+	          <th style="width: 36px" class="text-left"></th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        <tr *ngFor="let sound of sounds; let i = index">
+	          <td>
+				<span class="material-icons">{{i==0?'play_circle_filled':'play_circle_outline'}}</span>
+		      </td>
+	          <td class="text-left">{{sound.id}}</td>
+	          <td class="text-left">{{sound.name}}</td>
+	          <td class="text-left" class="text-center">mp3</td>
+	          <td class="text-left">
+				<span class="material-icons">more_vert</span>
+			  </td>
+	        </tr>
+	        </tbody>
+	      </table>
+
+	      <div class="paginator justify-content-center mb-2">
+	        <span class="material-icons">first_page</span>
+	        <span class="material-icons">chevron_left</span>
+	        <span class="page-button">1</span>
+	        <span class="page-button">2</span>
+	        <span class="page-button">3</span>
+	        <span class="page-button">4</span>
+	        <span class="material-icons">chevron_right</span>
+	        <span class="material-icons">last_page</span>
+	      </div>
+		</div>
+
+    </div>
+
+    <div class="audio-player-container col ml-md-4 mt-md-0 mt-4 p-4">
+    	<h3 class="title">
+    		AUDIO PLAYER
+    	</h3>
+    	<div class="mt-4">
+    		<span class="file-name">
+    			Summer 2019
+    		</span>
+    		<span class="updated float-right">
+    			Updated: 5/2/2019
+    		</span>
+    	</div>
+        <div class="play-bar-container">
+          <span class="ml-4">
+            0:00
+          </span>
+          <span>
+            /
+          </span>
+          <span>
+            0:00
+          </span>
+		  <mat-slider></mat-slider>
+          <img class="float-right mr-4 mt-2" src="assets/sound_on.png">
+          <img class="float-left ml-4" src="assets/play.png">
+        </div>
+    </div>
+</div>

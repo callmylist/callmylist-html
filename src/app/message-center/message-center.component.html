@@ -1,0 +1,426 @@
+<div *ngIf="nStep != 3">
+	<div class="main-container p-4" *ngIf="!bStarted">
+		<h1 class="big-title mt-2">
+			CallMyList Setup
+		</h1>
+
+		<div class="row justify-content-center mt-4">
+			<div class="col-md-8">
+				<span class="started-description">
+					It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned. The history of video game is as interesting as a fairy tale. 
+				</span>
+			</div>
+		</div>
+
+		<div class="mt-5 mb-2 text-center">
+			<button class="btn button-green" (click)="onGetStarted()">
+				GET STARTED
+			</button>
+		</div>
+	</div>
+
+	<div *ngIf="bStarted">
+		<div class="main-container step-number-container">
+			<div class="text-center">
+				<button class="btn {{0==nStep?'button-green':'button-transparent'}} btn-step">
+					1
+				</button>
+				<button class="btn {{1==nStep?'button-green':'button-transparent'}} btn-step">
+					2
+				</button>
+				<button class="btn {{2==nStep?'button-green':'button-transparent'}} btn-step">
+					3
+				</button>
+			</div>
+		</div>
+
+		<div class="main-container step-container mt-4 p-4" *ngIf="nStep == 0">
+			<h1 class="step-title text-center mt-2">
+				Let's Add Your Phone Number
+			</h1>
+
+			<div class="row justify-content-center mt-4">
+				<div class="col-md-8">
+					<span class="step-desc">
+						It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned. The history of video game is as interesting as a fairy tale. 
+					</span>
+				</div>
+			</div>
+
+			<div class="row justify-content-center mt-4">
+				<div class="col-md-4">
+					<mat-label class="active">Area Code</mat-label>
+					<mat-form-field class="w-100">
+		            	<input matInput type="text" [(ngModel)]="areaCodeTemp">
+		            </mat-form-field>
+				</div>
+			</div>
+
+			<div class="text-center">
+				<span class="phone-number">
+					Your Phoone Number: ({{areaCode}}) 475-9347
+				</span>
+			</div>
+			<div class="text-center error-container row justify-content-center">
+				<i class="material-icons">info</i>
+				<span class="phone-number">
+					This phone number has already been taken. Please enter a new number to secure.
+				</span>
+			</div>
+			<div class="text-center message-container row justify-content-center">
+				<i class="material-icons">info</i>
+				<span class="phone-number">
+					CallMyList is securing your phone number, this can take several minutes.
+				</span>
+			</div>
+
+			<div class="text-center mt-3" *ngIf="areaCode.length == 0">
+				<button class="btn button-green" (click)="onGetPhoneNumber()">
+					GET PHONE NUMBER
+				</button>
+			</div>
+
+			<div class="text-center mt-3" *ngIf="areaCode.length > 0">
+				<button class="btn button-green" (click)="onGetStartedPhone()">
+					GET STARTED
+				</button>
+			</div>
+		</div>
+
+		<div class="main-container step-container mt-4 p-4" *ngIf="nStep == 1">
+			<h1 class="step-title text-center mt-2">
+				Out of Office Message
+			</h1>
+
+			<div class="row justify-content-center mt-4">
+				<div class="col-md-8">
+					<span class="step-desc">
+						It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned. The history of video game is as interesting as a fairy tale. 
+					</span>
+				</div>
+			</div>
+
+			<div class="row justify-content-center mt-4 responder-container">
+				<div class="col-md-8 px-4">
+					<mat-label class="active">Auto Responder Message</mat-label>
+					<mat-form-field class="w-100 mx-2">
+		            	<input matInput type="text" [(ngModel)]="responderMessage" (ngModelChange)="onResponderMessageChange()">
+		            </mat-form-field>
+					<div class="mx-2 mt-n2">
+						<span>
+							({{responderMessage.length}}/140)
+						</span>				
+					</div>
+				</div>
+			</div>
+
+			<div class="responder-time-container">
+				<div class="text-center">
+					<span>
+						Would you like to set a schedule for this auto responder
+					</span>
+				</div>
+
+				<div class="row justify-content-center mt-3">
+					<div class="col-md-2">
+						<mat-label class="active">Day of Week</mat-label>
+						<mat-form-field class="w-100 form-field-week-day">
+			            	<mat-select placeholder="">
+			                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+
+					<div class="col-md-2">
+						<mat-label class="active">Start Time</mat-label>
+						<mat-form-field class="w-100">
+			            	<input matInput type="Time">
+			            </mat-form-field>
+					</div>
+
+					<div class="col-md-2">
+						<mat-label class="active">End Time</mat-label>
+						<mat-form-field class="w-100">
+			            	<input matInput type="Time">
+			            </mat-form-field>
+					</div>
+				</div>
+
+				<div class="row justify-content-center mt-3">
+					<div class="col-md-2">
+						<mat-label class="active">Day of Week</mat-label>
+						<mat-form-field class="w-100 form-field-week-day">
+			            	<mat-select placeholder="">
+			                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+			                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+			                </mat-select>
+			            </mat-form-field>
+					</div>
+
+					<div class="col-md-2">
+						<mat-label class="active">Start Time</mat-label>
+						<mat-form-field class="w-100">
+			            	<input matInput type="Time">
+			            </mat-form-field>
+					</div>
+
+					<div class="col-md-2">
+						<mat-label class="active">End Time</mat-label>
+						<mat-form-field class="w-100">
+			            	<input matInput type="Time">
+			            </mat-form-field>
+
+						<div class="mt-n3">
+							<span class="material-icons float-right">add_box</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center mt-5">
+				<button class="btn button-green btn-next" (click)="onFinishAutoResponder()">NEXT</button>
+			</div>
+		</div>
+
+		<div class="main-container step-container mt-4 p-4" *ngIf="nStep == 2">
+			<h1 class="step-title text-center mt-2">
+				Would You Like To Import CRM Data?
+			</h1>
+
+			<div class="row justify-content-center mt-4">
+				<div class="col-md-8">
+					<span class="step-desc">
+						It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned. The history of video game is as interesting as a fairy tale. 
+					</span>
+					<br>		
+					<br>				
+					<span class="step-desc">
+						Please select the correct column for each contact field below.
+					</span>
+				</div>
+			</div>
+
+			<div class="responder-time-container mx-3">
+				<div class="row justify-content-center mt-3">
+
+					<div class="col-md-10">
+						<div class="row justify-content-center">
+							<div class="col-md-2">
+								<mat-label class="active">First Name</mat-label>
+								<mat-form-field class="w-100">
+					            	<mat-select placeholder="">
+					                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+					                </mat-select>
+					            </mat-form-field>
+							</div>
+							<div class="col-md-2">
+								<mat-label class="active">Last Name</mat-label>
+								<mat-form-field class="w-100">
+					            	<mat-select placeholder="">
+					                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+					                </mat-select>
+					            </mat-form-field>
+							</div>
+							<div class="col-md-2" style="min-width: 116px">
+								<mat-label class="active">Company Name</mat-label>
+								<mat-form-field class="w-100">
+					            	<mat-select placeholder="">
+					                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+					                </mat-select>
+					            </mat-form-field>
+							</div>
+							<div class="col-md-2">
+								<mat-label class="active">Email</mat-label>
+								<mat-form-field class="w-100">
+					            	<mat-select placeholder="">
+					                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+					                </mat-select>
+					            </mat-form-field>
+							</div>
+							<div class="col-md-2">
+								<mat-label class="active">Phone</mat-label>
+								<mat-form-field class="w-100">
+					            	<mat-select placeholder="">
+					                    <mat-option><mat-checkbox>Monday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Tuesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Wednesday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Thursday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Friday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Saturday</mat-checkbox></mat-option>
+					                    <mat-option><mat-checkbox>Sunday</mat-checkbox></mat-option>
+					                </mat-select>
+					            </mat-form-field>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+			</div>
+
+			<div class="text-center mt-2">
+				<button class="btn button-transparent btn-select-file" (click)="onSelectFile()">SELECT FILE</button>
+			</div>
+
+			<div class="text-center mt-4" *ngIf="nStep != 2">
+				<button class="btn button-green btn-next" (click)="onFinishCRMData()">NEXT</button>
+			</div>
+
+			<div class="text-center mt-4" *ngIf="nStep == 2">
+				<button class="btn button-green btn-next" (click)="onFinishCRMData()">COMPLETE</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="nStep == 3">
+	<div class="search-container mt-n4 mx-n4">
+		<div class="row mx-0">
+			<div class="col-md-6 offset-md-3">
+				<span class="material-icons">search</span>
+				<mat-form-field class="w-100 mb-n3">
+					<mat-label class="active"></mat-label>
+		        	<input matInput type="text" placeholder="Contact Search">
+		        </mat-form-field>
+			</div>
+
+			<div class="col-md-3">
+				<button class="btn button-transparent float-right" (click)="onNewMessage()">
+					NEW MESSAGE
+				</button>
+			</div>
+		</div>
+	</div>
+
+<!-- 	<div class="top-bar">
+	    <div class="row">
+	      <div class="icon-box">
+	        <span class="material-icons">message</span>
+	      </div>
+	      <div class="col message-box">
+	        <h6>
+	          Get the Message Center Today!
+	        </h6>
+	        <p>
+	          Manage your corporate text communications all inside a single interface. Click the Start Subscription button to get started using the Message Center today.
+	        </p>
+	      </div>
+	      <div class="button-box">
+	        <button class="btn button-dark-green float-right">
+	          START SUBSCRIPTION
+	        </button>
+	      </div>
+	    </div>
+	</div> -->
+
+	<div class="message-list-container mt-4 pt-2">
+		<div class="stage-container mx-2 row">
+			<div class="col-md-2 p-2">
+				<button class="btn {{contact_filter==0?'button-green':'button-transparent'}} w-100" (click)="onContactFilter(0)">
+					RECENT
+				</button>
+			</div>
+			<div class="col-md-2 p-2">
+				<button class="btn {{contact_filter==1?'button-green':'button-transparent'}} w-100" (click)="onContactFilter(1)">
+					FAVORITE
+				</button>
+			</div>
+			<div class="col-md-2 p-2">
+				<button class="btn {{contact_filter==2?'button-green':'button-transparent'}} w-100" (click)="onContactFilter(2)">
+					FOLLOW UP
+				</button>
+			</div>
+			<div class="col-md-2 p-2">
+				<button class="btn {{contact_filter==3?'button-green':'button-transparent'}} w-100" (click)="onContactFilter(3)">
+					CAMPAIGNS
+				</button>
+			</div>
+		</div>
+		
+		<div class="message-list mt-2">
+			<div *ngFor="let contact of contact_list; index as i ">
+				<div class="{{i%2==0?'highlight':''}}">
+					<div class="row ml-0 mr-0">
+						<div class="col row mr-3" (click)="onMessages()">
+							<div>
+								<div class="badge-container {{contact.badge==true?'':'badge-hide'}}">
+								</div>
+
+								<span *ngIf="contact_filter!=2" class="material-icons ml-1 mt-3 {{contact.favorite == true?'fill':''}}">{{contact.favorite == true?'star':'star_border'}}
+								</span>
+								<span *ngIf="contact_filter==2" class="material-icons ml-1 mt-3 black-fill">announcement
+								</span>
+							</div>
+
+							<div class="col-md-2">
+								<p class="item-name mt-3 mb-0">
+									Steve Smith
+								</p>
+								<span class="item-company-name">
+									Company Name
+								</span>
+								<br>
+								<p class="item-company-name mb-3 mt-2">
+									9:36AM
+								</p>
+							</div>
+
+							<div class="col description-container">
+								<p class="item-company-name mb-0 mt-1 mb-1">
+									I am interested in renewing my season tickets. Please let me know if there is a discount. I am interested in renewing my season tickets. Please let me know if there is a discount.
+								</p>
+							</div>
+						</div>
+
+
+						<div class="menu-icon-container description-container">
+							<span class="material-icons mt-auto mb-auto mr-3" [matMenuTriggerFor]="menu">more_vert</span>
+							<mat-menu #menu="matMenu">
+								<button mat-menu-item (click)="onSelectContact()">View User</button>
+								<button mat-menu-item (click)="onSelectContact()">Mark As Favorite</button>
+								<button mat-menu-item (click)="onSelectContact()">Create Follow Up Task</button>
+								<button mat-menu-item (click)="onDelete()">Delete</button>
+								<button mat-menu-item (click)="onSelectContact()">Archive</button>
+							</mat-menu>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

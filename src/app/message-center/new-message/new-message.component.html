@@ -1,0 +1,71 @@
+<div class="new-message-container">
+	<div class="w-100 close-container">
+		<img src="assets/close.svg" class="float-right">
+	</div>
+
+	<div>
+		<h1 class="dialog-title text-center">
+			New Message
+		</h1>
+	</div>
+
+	<h5 class="ml-2 mt-5">
+		Contact Search
+	</h5>
+	<div class="position-relative mt-n2">
+		<div class="search-container">
+			<span class="material-icons">search</span>
+			<mat-form-field class="w-100 mb-n3">
+				<mat-label class="active"></mat-label>
+				<input matInput type="text" (input)="onKeywordChange()">
+			</mat-form-field>
+		</div>
+	</div>
+
+	<div *ngIf="bEditing">
+		<table class="table table-borderless table-striped pt-3">
+            <thead>
+            <tr>
+              <th style="width: 60%">Name</th>
+              <th class="text-center" style="width: 40%">Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sound of mySounds" (click)="selectContact()">
+              <td>{{sound.name}}</td>
+              <td class="text-center"><span>{{sound.phone}}</span><span class="material-icons" style="position: absolute;">keyboard_arrow_right</span></td>
+            </tr>
+            </tbody>
+          </table>
+	</div>
+	<div *ngIf="!bEditing">
+		<div class="text-container pt-2 mt-4">
+			<h5 class="ml-2">
+				Message
+			</h5>
+			<textarea class="w-100 p-2">
+			</textarea>
+		</div>
+
+		<div class="mt-2">
+			<span class="text-length">
+				(40/140)
+			</span>
+			<span class="material-icons float-right">image</span>
+		</div>
+
+		<div class="row px-2 mt-4">
+			<div class="col-md-6 px-2">
+				<button class="btn button-transparent w-100 mt-1 mb-1">
+					CANCEL
+				</button>
+			</div>
+			<div class="col-md-6 px-2">
+				<button class="btn button-green w-100 mt-1 mb-1">
+					SEND MESSAGE
+				</button>
+			</div>
+		</div>
+	</div>
+
+</div>

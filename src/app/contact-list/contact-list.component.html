@@ -1,0 +1,120 @@
+<div class="row main-container">
+    <div class="contact-list-container pb-2 pt-4 pl-4 pr-4 col-md-7">
+    	<h3 class="title">
+    		CONTACT LIST
+    	</h3>
+
+    	<div class="no-contact-container text-center mb-3"  *ngIf="contact_list.length == 0">
+    		<h6>
+    			You do not have any Contact Lists
+    		</h6>
+    	</div>
+
+        <div *ngIf="contact_list.length != 0" class="mt-4">
+            <div class="mr-n4 ml-n4 mt-2">
+              <table class="table table-borderless table-striped">
+                <thead>
+                <tr>
+                  <th class="text-left"><div>Name<span class="material-icons">edit</span></div></th>
+                  <th class="text-left">ID</th>
+                  <th class="text-left">Total</th>
+                  <th style="width: 36px" class="text-left"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let contact of contact_list">
+                  <td class="text-left">{{contact.id}}</td>
+                  <td class="text-left">{{contact.name}}</td>
+                  <td class="text-left">{{contact.total}}</td>
+                  <td class="text-left">
+                    <span class="material-icons">more_vert</span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+              <div class="paginator justify-content-center mb-2">
+                <span class="material-icons">first_page</span>
+                <span class="material-icons">chevron_left</span>
+                <span class="page-button">1</span>
+                <span class="page-button">2</span>
+                <span class="page-button">3</span>
+                <span class="page-button">4</span>
+                <span class="material-icons">chevron_right</span>
+                <span class="material-icons">last_page</span>
+              </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="second-list-container col ml-md-4 mt-md-0 mt-4 p-0">
+
+        <div class="upload-list-container failed-container p-3 w-100 mb-4" *ngIf="contact_list.length != 0">
+
+                <span class="material-icons float-right button-close">close</span>
+            <div>                
+                <h3 class="title">
+                    Failure
+                </h3>
+
+            </div>
+
+            <div class="mt-3">
+                <span class="material-icons float-left mr-4">sms_failed</span>
+                <div>
+                    <span>
+                        <strong>Uploaded file format incorrect</strong>
+                        <br>
+                        6/15/2018 11:34am
+                    </span>
+                </div>
+            </div>
+
+        </div> 
+
+        <div class="upload-list-container success-container p-3 w-100 mb-4" *ngIf="contact_list.length != 0">
+            <h3 class="title">
+                Success
+            </h3>
+
+            <div class="mt-3">
+                <span class="material-icons float-left mr-4">check_circle</span>
+                <div>
+                    <span>
+                        <strong>Your file has been uploaded.</strong>
+                        <br>
+                        6/15/2018 11:34am
+                    </span>
+                </div>
+            </div>
+
+        </div> 
+
+        <div class="upload-list-container p-4 w-100">
+            <h3 class="title">
+                UPLOAD NEW LIST
+            </h3>
+
+            <div class="px-2">
+                <mat-form-field class="w-100 mt-2">
+                    <mat-label>Select Phone Number Column</mat-label>
+                    <mat-select placeholder="">
+                        <mat-option>Test</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="toggle-container mb-2">
+                      <mat-slide-toggle>Does your file contain headers?</mat-slide-toggle>
+                </div>
+
+                <div class="w-100 text-center mt-3">
+                    <button class="btn button-green" (click)="onUploadNewList()">
+                        UPLOAD CONTACT LIST
+                    </button>
+                </div>
+            </div>
+        </div> 
+    </div>
+   
+</div>

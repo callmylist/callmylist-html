@@ -1,0 +1,311 @@
+.main-container
+{
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.started-description
+{
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.main-container button
+{
+	width: 296px;
+}
+
+.step-number-container
+{
+	padding: 12px;
+}
+
+.btn-step
+{
+  width: 75px !important;
+  height: 50px !important;
+  border-radius: 3px;
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin: 12px;
+}
+
+.step-title
+{
+  font-family: Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.step-container span.step-desc
+{	
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+mat-label
+{
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+input
+{	
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+mat-form-field
+{
+  margin-top: -8px;
+}
+
+.phone-number
+{	
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.responder-container
+{
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #bcbcbc;
+}
+
+.responder-time-container
+{
+  margin-top: 21px;
+}
+
+.responder-time-container span:not(.material-icons)
+{  
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.material-icons
+{
+  color: #515151;
+}
+
+.btn-next
+{
+  width: 296px;
+}
+
+.btn-select-file
+{
+  width: 170px !important;
+}
+
+.search-container
+{
+  background-color: white;
+  padding: 14px;
+}
+
+.search-container mat-form-field
+{
+  margin-top: -8px !important;
+}
+
+.search-container button
+{
+  width: 145px;
+}
+
+.search-container span
+{
+  position: absolute;
+  top: 7px;
+  left: 16px;
+}
+
+.search-container input
+{
+  padding-left: 30px;
+}
+
+.message-list-container
+{  
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+.message-list-button
+{  
+  width: 100px;
+}
+
+.highlight
+{
+  background-color: #e8e8e8;
+}
+
+.badge-container
+{
+  width: 0; 
+  height: 0;   
+  border-bottom: 11px solid transparent;  
+  border-right: 11px solid transparent;
+  border-top: 11px solid #207d71;
+  border-left: 11px solid #207d71;
+}
+
+.badge-hide
+{
+  border-bottom: 11px solid transparent;  
+  border-right: 11px solid transparent;
+  border-top: 11px solid transparent;
+  border-left: 11px solid transparent;
+}
+.item-name
+{  
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.item-company-name
+{  
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #515151;
+}
+
+.description-container
+{
+  display: flex;
+  align-items: center;
+}
+
+.fill
+{
+  color: #207d71;
+}
+
+.black-fill
+{
+  color: #414141;
+}
+
+.mat-menu-item
+{
+    width: 200px;
+    outline: none;
+    height: 30px;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #515151;
+}
+
+.responder-time-container  mat-form-field
+{
+  margin-top: -3px !important;
+}
+
+.stage-container h5
+{  
+  font-family: Raleway, sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.93;
+  letter-spacing: -0.3px;
+  color: #444444;
+  position: absolute;
+}
+
+
+.stage-container button
+{
+  margin-top: -5px;
+}
+
+.no-contact-box {
+  background: #f1f1f1;
+  border: solid 1px #d2d2d2;
+}
+
+.no-contact-box p {
+  font-size: 18px;
+  color: #515151;
+  margin-bottom: 0px !important;
+}
+
+h4 {
+  font-size: 36px;
+  columns: #515151;;
+}
+
+.import-message {
+  font-size: 16px;
+}
