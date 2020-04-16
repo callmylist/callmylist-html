@@ -1,0 +1,41 @@
+<div class="page-container d-flex">
+	<div class="signup-container mr-auto ml-auto flex-width justify-content-center align-self-center container-fluid">
+		<div class="row justify-content-center mt-4">
+			<div class="logo-container">
+				<img src="assets/logo.png" class="w-100">
+			</div>
+		</div>
+		<div class="row mt-4 signup-label">
+			<h3 class="signup-label w-100">
+				SMS VERFIFICATOIN CODE
+			</h3>
+        </div>
+        
+        <form>
+            <div class="row justify-content-center form-container">
+                <div class="col-9 text-center">
+                    <mat-error [hidden]="nStep != 1">Verification failed. Please try again.</mat-error>
+                    <p>
+                        Enter verification code.
+                    </p>
+                    <div class="code-container">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="row justify-content-center mt-5 mb-4">
+                <div class="col-5">
+                  <button class="w-100 btn_signup" (click)="sendVerificationCode()">SUBMIT</button>
+                </div>
+                <div class="col-5">
+                  <button class="w-100 btn_signup" (click)="sendVerificationCode()">NEW CODE</button>
+                </div>
+            </div>
+        </form>
+	</div>
+</div>

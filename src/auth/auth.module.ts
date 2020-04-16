@@ -8,16 +8,22 @@ import { AuthComponent } from './auth/auth.component';
 import { MatFormFieldModule } from "@angular/material";
 import { MatInputModule } from "@angular/material";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RegisterComponent } from './register/register.component';
+import { VerificationComponent } from './verification/verification.component';
+import { RequestVerificationComponent } from './request-verification/request-verification.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, AuthComponent, ResetPasswordComponent],
+  declarations: [LoginComponent, SignupComponent, AuthComponent, ResetPasswordComponent, RegisterComponent, VerificationComponent, RequestVerificationComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }
