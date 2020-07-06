@@ -1,26 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
+  public bTogglePassword: Boolean = false;
+  public bLoginFailed: Boolean = false;
+  constructor() {}
 
-	private bTogglePassword : Boolean = false;
-	private bLoginFailed : Boolean = false;
-	constructor() { }
+  ngOnInit() {}
 
-	ngOnInit() {
-	}
+  togglePassword() {
+    this.bTogglePassword = !this.bTogglePassword;
+  }
 
-	togglePassword()
-	{
-		this.bTogglePassword = !this.bTogglePassword
-	}
-
-	login()
-	{
-		this.bLoginFailed = true
-	}
+  login() {
+    this.bLoginFailed = true;
+  }
 }

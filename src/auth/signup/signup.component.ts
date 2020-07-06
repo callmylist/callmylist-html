@@ -1,26 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: "app-signup",
+  templateUrl: "./signup.component.html",
+  styleUrls: ["./signup.component.css"],
 })
 export class SignupComponent implements OnInit {
+  public bTogglePassword: Boolean = false;
+  constructor(public router: Router) {}
 
-  private bTogglePassword : Boolean = false;
-  constructor(private router: Router) { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  togglePassword() {
+    this.bTogglePassword = !this.bTogglePassword;
   }
 
-  togglePassword()
-  {
-  	this.bTogglePassword = !this.bTogglePassword
-  }
-
-  signup()
-  {
-    this.router.navigateByUrl('auth/login')
+  signup() {
+    this.router.navigateByUrl("auth/login");
   }
 }

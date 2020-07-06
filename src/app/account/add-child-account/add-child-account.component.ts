@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-add-child-account',
-  templateUrl: './add-child-account.component.html',
-  styleUrls: ['./add-child-account.component.css']
+  selector: "app-add-child-account",
+  templateUrl: "./add-child-account.component.html",
+  styleUrls: ["./add-child-account.component.css"],
 })
 export class AddChildAccountComponent implements OnInit {
-  private bTogglePassword : Boolean = false;
+  public bTogglePassword: Boolean = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  togglePassword()
-  {
-  	this.bTogglePassword = !this.bTogglePassword
+  togglePassword() {
+    this.bTogglePassword = !this.bTogglePassword;
   }
 }
