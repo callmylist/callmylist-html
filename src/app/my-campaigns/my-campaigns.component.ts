@@ -5,8 +5,10 @@ import {
   MAT_DIALOG_DATA,
 } from "@angular/material/dialog";
 import { UpdateCampaignComponent } from "./update-campaign/update-campaign.component";
+import { AuthorizePriceComponent } from "./authorize-price/authorize-price.component";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { PaymentErrorComponent } from './payment-error/payment-error.component';
 
 @Component({
   selector: "app-my-campaigns",
@@ -22,8 +24,9 @@ export class MyCampaignsComponent implements OnInit {
 
   public createStage: boolean = false;
 
-  public campaignType: number = 2;
+  public campaignType: number = 1;
   public nStep: number = 0;
+  public selectedPlan: number = -1;
   public text_campaign_process = [
     "Campaign Type",
     "Campaign Name",
@@ -272,5 +275,20 @@ export class MyCampaignsComponent implements OnInit {
 
   onUploadContactList() {
     this.uploadContactList = true;
+  }
+
+  onSelectPlan(plan: number) {
+    if(this.selectedPlan == plan) {
+      this.selectedPlan = -1;
+    }
+    else {
+      this.selectedPlan = plan;
+    }
+
+    const dialogRef = this.dialog.open(AuthorizePriceComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.dialog.open(PaymentErrorComponent)
+    });
   }
 }

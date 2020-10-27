@@ -28,6 +28,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { AccountUpdateComponent } from './account/account-update/account-update.component';
 import { MessageCenterComponent } from './message-center/message-center.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 import { LoadingDataComponent } from './message-center/loading-data/loading-data.component';
 import { LoadingFinishedComponent } from './message-center/loading-finished/loading-finished.component';
 import { NewMessageComponent } from './message-center/new-message/new-message.component';
@@ -39,6 +40,8 @@ import { MessagesComponent } from './message-center/messages/messages.component'
 import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { TestCallComponent } from './dashboard/test-call/test-call.component';
+import { AuthorizePriceComponent } from './my-campaigns/authorize-price/authorize-price.component';
+import { PaymentErrorComponent } from './my-campaigns/payment-error/payment-error.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,9 @@ import { TestCallComponent } from './dashboard/test-call/test-call.component';
     MessagesComponent,
     DeleteConfirmComponent,
     ContactsComponent,
-    TestCallComponent
+    TestCallComponent,
+    AuthorizePriceComponent,
+    PaymentErrorComponent
   ],
   imports: [
     ChartsModule,
@@ -83,7 +88,8 @@ import { TestCallComponent } from './dashboard/test-call/test-call.component';
     MatProgressBarModule,
     MatSliderModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [],
   entryComponents: [
@@ -101,7 +107,9 @@ import { TestCallComponent } from './dashboard/test-call/test-call.component';
       AddChildAccountComponent,
       MessagesComponent,
       DeleteConfirmComponent,
-      TestCallComponent
+      TestCallComponent,
+      AuthorizePriceComponent,
+      PaymentErrorComponent
   ]
 })
 export class AppModule { }

@@ -186,6 +186,17 @@
               <span class="label-area">We are sorry but that Area Code isn’t currently available. Please search for a different Area Code.</span>
             </div>
           </div>
+
+          <div class="row justify-content-center mt-3">
+            <div class="col-6 justify-content-center">
+              <p>
+                We will send the mass text from a group of phone number within the area code selected above.<br>
+                When contacts reond you will get the messages in your Titan inbox.<br><br>
+                Would you like to auto forward the calls from the text messages to your direct phone number?<br>
+                When people call the number theyh received the text from we will auto forward it directly to the number listed below.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div *ngIf="nStep == 3 && campaignType == COMPAIGN_TYPE_TEXT">
@@ -765,6 +776,56 @@
                   </mat-form-field>
                 </div>  
               </div>
+
+              <div class="ml-4 price-panel">
+                <div>
+                  <div class="row">
+                    <div class="plan-container" [class.selected-plan]="selectedPlan == 0" (click)="onSelectPlan(0)">
+                      <div class="justify-content-center price-container">
+                        <span class="dollar">$</span>
+                        <h1 class="price">2</h1>
+                        <span class="decimal">99</span>
+                      </div>
+                      
+                      <p>0% Decrease Time</p>
+                      <p class="hours">12.5 Hrs</p>
+                    </div>  
+                    <div class="plan-container" [class.selected-plan]="selectedPlan == 1" (click)="onSelectPlan(1)">
+                      <div class="justify-content-center price-container">
+                        <span class="dollar">$</span>
+                        <h1 class="price">12</h1>
+                        <span class="decimal">99</span>
+                      </div>
+                      
+                      <p>25% Decrease Time</p>
+                      <p class="hours">12.5 Hrs</p>
+                    </div>                      
+                    <div class="plan-container" [class.selected-plan]="selectedPlan == 2" (click)="onSelectPlan(2)">
+                      <div class="justify-content-center price-container">
+                        <span class="dollar">$</span>
+                        <h1 class="price">22</h1>
+                        <span class="decimal">99</span>
+                      </div>
+                      
+                      <p>50% Decrease Time</p>
+                      <p class="hours">12.5 Hrs</p>
+                    </div>                      
+                    <div class="plan-container" [class.selected-plan]="selectedPlan == 3" (click)="onSelectPlan(3)">
+                      <div class="justify-content-center price-container">
+                        <span class="dollar">$</span>
+                        <h1 class="price">32</h1>
+                        <span class="decimal">99</span>
+                      </div>
+                      
+                      <p>75% Decrease Time</p>
+                      <p class="hours">12.5 Hrs</p>
+                    </div>                      
+                  </div>
+
+                </div>
+              </div>
+
+
               <div class="toggle-container ml-4 mr-4 mt-2">
                 <mat-slide-toggle></mat-slide-toggle>
                 <p>
