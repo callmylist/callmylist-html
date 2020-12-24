@@ -1,0 +1,58 @@
+<div class="main-container pt-4 pr-4 pl-4 pb-3 w-100">
+    <div class="title-bar clearfix">
+        <h2 class="title float-left">
+          MY TEXT CAMPAIGNS
+        </h2>
+        <button class="btn btn-custom-success float-right">
+          NEW TEXT CAMPAIGN
+        </button>
+    </div>
+    
+    <div class="mr-n4 ml-n4">
+      <table class="table table-borderless table-striped">
+          <thead>
+          <tr>
+            <th style="width: 76%"><div class="justify-content-left name-header-container">Name<span class="material-icons">edit</span></div></th>
+            <th style="width: 8%" class="text-center">Date sent</th>
+            <th style="width: 14%" class="text-center">Completed</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let campaign of textCampaigns">
+            <td>
+                <div (click)="onUpdate($event)" class="title-container">
+                  <span class="material-icons" *ngIf="campaign.state == 'checked'">check_circle</span>
+                  <span class="material-icons ico-close" *ngIf="campaign.state == 'unchecked'">cancel</span>
+                  <img *ngIf="campaign.state == 'scheduled'" src="assets/scheduled.png">
+                  {{campaign.name}}
+                </div>
+            </td>
+            <td class="text-center">{{campaign.dateSent}}</td>
+            <td class="text-center">{{campaign.completed ? "Y" : "N"}}</td>
+            <td class="text-right">
+              <span class="material-icons menu" [matMenuTriggerFor]="menu">more_vert</span>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Rerun Campaign</button>
+                <button mat-menu-item>Send Test Call</button>
+                <button mat-menu-item>View Campaign</button>
+                <button mat-menu-item>Delete</button>
+              </mat-menu>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+  
+        <div class="paginator justify-content-center">
+          <span class="material-icons">first_page</span>
+          <span class="material-icons">chevron_left</span>
+          <span class="page-button">1</span>
+          <span class="page-button">2</span>
+          <span class="page-button">3</span>
+          <span class="page-button">4</span>
+          <span class="material-icons">chevron_right</span>
+          <span class="material-icons">last_page</span>
+        </div>
+    </div>
+</div>
+
+

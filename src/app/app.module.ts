@@ -42,6 +42,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { TestCallComponent } from './dashboard/test-call/test-call.component';
 import { AuthorizePriceComponent } from './my-campaigns/authorize-price/authorize-price.component';
 import { PaymentErrorComponent } from './my-campaigns/payment-error/payment-error.component';
+import { TextCampaignsComponent } from './text-campaigns/text-campaigns.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { PaymentErrorComponent } from './my-campaigns/payment-error/payment-erro
     ContactsComponent,
     TestCallComponent,
     AuthorizePriceComponent,
-    PaymentErrorComponent
+    PaymentErrorComponent,
+    TextCampaignsComponent
   ],
   imports: [
     ChartsModule,
